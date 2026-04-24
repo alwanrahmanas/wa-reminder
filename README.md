@@ -78,11 +78,27 @@ Sistem ini mendukung dua jenis reminder utama:
 ### 1. Install Dependencies
 
 ```bash
+git clone https://github.com/alwanrahmanas/wa-reminder.git
 cd wa-reminder
 npm install
 ```
 
-### 2. Konfigurasi `.env`
+### 2. Konfigurasi Data (Standalone)
+
+Sistem ini membutuhkan dua file data:
+- `reminder_config.json` (Daftar tim dan nomor HP)
+- `data_embed.js` (Data timeline kegiatan)
+
+Jika menjalankan secara mandiri, salin dari contoh yang disediakan:
+
+```bash
+cp reminder_config.example.json reminder_config.json
+cp data_embed.example.js data_embed.js
+```
+
+Silakan edit kedua file tersebut sesuai dengan struktur tim dan timeline kegiatan nyata Anda. Bot otomatis akan mendeteksi file di direktori lokal terlebih dahulu.
+
+### 3. Konfigurasi `.env`
 
 ```bash
 cp .env.example .env
@@ -95,24 +111,7 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxxx
 OPENAI_MODEL=gpt-4o-mini
 ```
 
-### 3. Isi Nomor HP di `reminder_config.json`
-
-Pastikan field `hp` di setiap member terisi nomor WA valid (format `628xxx`):
-
-```json
-{
-  "tim_members": {
-    "sosial": [
-      {
-        "nama": "Alwan",
-        "email": "alwanrahmana@bps.go.id",
-        "hp": "6285892150804",
-        "role": "Ketua Tim"
-      }
-    ]
-  }
-}
-```
+*(Opsional) Jika data timeline berada di folder lain, Anda dapat menggunakan variabel `DATA_DIR=../` di `.env`*
 
 ### 4. Jalankan Bot
 
@@ -171,16 +170,18 @@ node index.js --preview --date 2026-05-01
 
 ```
 wa-reminder/
-├── index.js           # Entry point + scheduler
-├── config.js          # Load config & timeline data
-├── timeline.js        # Week boundaries & reminder logic
-├── ai_message.js      # OpenAI message generator
-├── wa_client.js       # WhatsApp Web client wrapper
-├── test_openai.js     # Test script untuk OpenAI
-├── package.json       # Dependencies
-├── .env.example       # Template konfigurasi
-├── .env               # Konfigurasi (jangan commit!)
-└── .wwebjs_auth/      # Session WA (auto-generated)
+├── index.js                     # Entry point + scheduler
+├── config.js                    # Load config & timeline data
+├── timeline.js                  # Week boundaries & reminder logic
+├── ai_message.js                # OpenAI message generator
+├── wa_client.js                 # WhatsApp Web client wrapper
+├── test_openai.js               # Test script untuk OpenAI
+├── package.json                 # Dependencies
+├── reminder_config.example.json # Template config anggota tim
+├── data_embed.example.js        # Template data timeline kegiatan
+├── .env.example                 # Template konfigurasi env
+├── .env                         # Konfigurasi (jangan commit!)
+└── .wwebjs_auth/                # Session WA (auto-generated)
 ```
 
 ---

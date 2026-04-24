@@ -6,9 +6,14 @@
 const fs = require('fs');
 const path = require('path');
 
-const BASE_DIR = path.resolve(__dirname, '..');
-const CONFIG_FILE = path.join(BASE_DIR, 'reminder_config.json');
-const DATA_JS = path.join(BASE_DIR, 'data_embed.js');
+const BASE_DIR = process.env.DATA_DIR ? path.resolve(__dirname, process.env.DATA_DIR) : path.resolve(__dirname, '..');
+
+// Try to find the data files in the local directory first, otherwise fallback to BASE_DIR (parent)
+const localConfig = path.join(__dirname, 'reminder_config.json');
+const CONFIG_FILE = fs.existsSync(localConfig) ? localConfig : path.join(BASE_DIR, 'reminder_config.json');
+
+const localData = path.join(__dirname, 'data_embed.js');
+const DATA_JS = fs.existsSync(localData) ? localData : path.join(BASE_DIR, 'data_embed.js');
 
 /**
  * Load reminder_config.json

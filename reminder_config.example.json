@@ -1,0 +1,18 @@
+{
+  "tim_members": {
+    "sosial": [
+      {
+        "nama": "John Doe",
+        "hp": "6281234567890",
+        "role": "Ketua Tim"
+      }
+    ],
+    "produksi": [
+      {
+        "nama": "Jane Doe",
+        "hp": "6289876543210",
+        "role": "Anggota"
+      }
+    ]
+  }
+}
