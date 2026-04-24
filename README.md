@@ -1,6 +1,8 @@
-# 🤖 BPS WhatsApp Reminder Bot
+# 🤖 BPS WhatsApp Reminder Bot (Presensi Edition)
 
-Sistem reminder otomatis via **WhatsApp** untuk Timeline Kegiatan BPS Kab. Buton Utara.
+Sistem reminder otomatis via **WhatsApp** yang difokuskan untuk mengingatkan jadwal **Presensi Pulang** pegawai. 
+
+> **Catatan Penting:** Repositori *standalone* ini difokuskan secara khusus pada fitur **Reminder Presensi**. Jika Anda tertarik dengan versi lengkap yang mencakup fitur **Reminder Pekerjaan / Timeline Kegiatan BPS**, silakan hubungi saya (lihat kontak di bawah).
 
 Menggunakan:
 - **whatsapp-web.js** — koneksi WA via browser socket (bukan API resmi)
@@ -62,9 +64,10 @@ Sistem ini dirancang untuk bekerja secara mandiri tanpa memerlukan database atau
 
 ### 3. Tipe Reminder
 
-Sistem ini mendukung dua jenis reminder utama:
-- **Reminder Harian**: Dikirim setiap hari (pagi & sore) untuk kegiatan yang akan/sedang berlangsung pada hari itu.
-- **Ringkasan Mingguan (Weekly Digest)**: Dikirim khusus setiap hari **Senin** pagi. Berisi daftar lengkap kegiatan yang berjalan pada minggu ini (W-current) dan kegiatan yang direncanakan untuk minggu depan (W-next).
+Fokus utama pada repositori ini adalah:
+- **Reminder Presensi Pulang**: Dikirim otomatis setiap jam 17:00 (Senin - Jumat) untuk mengingatkan seluruh pegawai melakukan presensi.
+
+*(Fitur tambahan di versi lengkap: Reminder Harian Kegiatan & Ringkasan Mingguan)*
 
 ### 4. Fitur Tambahan Otomatis
 
@@ -211,3 +214,12 @@ wa-reminder/
 | Chromium error | Install: `npx puppeteer browsers install chrome` |
 | OpenAI error | Cek API key di `.env`, pastikan ada saldo |
 | Pesan tidak terkirim | Pastikan nomor terdaftar WA, format `628xxx` |
+
+---
+
+## 📞 Kontak & Support
+
+Jika Anda memiliki pertanyaan lebih lanjut, atau ingin mendiskusikan implementasi fitur **Reminder Pekerjaan/Timeline** yang lebih kompleks di kantor Anda, silakan hubungi saya:
+
+- **Email**: alwanrahmana@gmail.com
+- **LinkedIn**: [linkedin.com/in/alwanrahmana](https://linkedin.com/in/alwanrahmana)
